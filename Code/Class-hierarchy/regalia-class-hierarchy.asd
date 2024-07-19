@@ -12,4 +12,6 @@
    (:file "array-unsigned-byte-16")
    (:file "array-signed-byte-16")
    (:file "array-unsigned-byte-8")
-   (:file "array-signed-byte-8")))
+   (:file "array-signed-byte-8")
+   (:file "array-double-float")
+   (:file "array-single-float")))
