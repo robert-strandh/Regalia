@@ -16,4 +16,5 @@
    (:file "array-double-float")
    (:file "array-single-float")
    (:file "array-complex-double-float")
-   (:file "array-complex-single-float")))
+   (:file "array-complex-single-float")
+   (:file "array-character")))
