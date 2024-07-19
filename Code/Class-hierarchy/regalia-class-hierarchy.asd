@@ -10,4 +10,6 @@
    (:file "array-unsigned-byte-32")
    (:file "array-signed-byte-32")
    (:file "array-unsigned-byte-16")
-   (:file "array-signed-byte-16")))
+   (:file "array-signed-byte-16")
+   (:file "array-unsigned-byte-8")
+   (:file "array-signed-byte-8")))
