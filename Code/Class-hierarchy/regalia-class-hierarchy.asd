@@ -28,4 +28,6 @@
    (:file "vector-unsigned-byte-8")
    (:file "vector-single-float")
    (:file "vector-double-float")
+   (:file "vector-complex-single-float")
+   (:file "vector-complex-double-float")
    (:file "array-bit")))
