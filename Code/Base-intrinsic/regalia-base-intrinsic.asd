@@ -3,4 +3,4 @@
 (defsystem "regalia-base-intrinsic"
   :serial t
   :components
-  ((:file "packages-intrinsic")))
+  ((:file "packages")))
