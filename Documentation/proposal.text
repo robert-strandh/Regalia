@@ -1,0 +1,108 @@
+Proposal
+
+The class ARRAY has these slots:
+
+   DIMENSIONS, a list of dimensions.
+   ELEMENT-TYPE
+   DISPLACED-INDEX-OFFSET
+   UNDERLYING-ARRAY
+
+The subclass VECTOR has an additional slot:
+   FILL-POINTER
+ 
+Depending on the values of the slots UNDERLYING-ARRAY and
+DISPLACED-INDEX-OFFSET, we say that the array is simple, non-simple
+but not displaced, or displaced.
+
+If the array is simple, the slot UNDERLYING-ARRAY contains NIL.  If
+the array is a displaced array, the slot DISPLACED-INDEX-OFFSET
+contains a non-negative integer.  Otherwise, it contains NIL.  Also if
+the array is a displaced array, the slot UNDERLYING-ARRAY contains the
+array to which this array is displaced.  If the array is not a simple
+array and not a displaced array, the slot UNDERLYING-ARRAY contains a
+simple array.  Also if the array is not a simple array and not a
+displaced array, the slot DIMENSIONS contains NIL.
+
+A simple array is not adjustable, if ADJUST-ARRAY is applied to a
+simple array, a new array is created.  
+
+Standard operators:
+
+AREF
+   * simple
+
+     Turn the dimensions into a row-major index and call
+     ROW-MAJOR-AREF-UNCHECKED with the result.
+
+   * non-simple, not displaced
+
+     Trampoline to the underlying array
+
+   * displaced
+
+     Turn the dimensions into a row-major index and call
+     ROW-MAJOR-AREF on the underlying array.
+
+ARRAY-DIMENSIONS
+
+   * simple
+
+     Return the value of the slot DIMENSIONS.
+
+   * non-simple, not displaced
+
+     Trampoline to the underlying array.
+
+   * displaced
+
+     Return the value of the slot DIMENSIONS.
+
+ARRAY-DIMENSION
+
+   * simple
+
+     Check the argument against the rank and then return the Nth
+     element of the contents of the slot DIMENSIONS.
+
+   * non-simple, not displaced
+
+     Trampoline to the underlying array.
+
+   * displaced
+
+     Check the argument against the rank and then return the Nth
+     element of the contents of the slot DIMENSIONS.
+
+ARRAY-ELEMENT-TYPE
+
+ROW-MAJOR-AREF
+
+   * simple
+
+     Check the index with number of elements of the array and call
+     ROW-MAJOR-AREF-UNCHECKED.
+
+   * non-simple, not displaced
+
+     Call ROW-MAJOR-AREF on the underlying array.
+
+   * displaced
+
+     Check the index with the dimensions, and then call ROW-MAJOR-AREF
+     on the underlying array.
+
+ROW-MAJOR-AREF-UNCHECKED
+
+   * simple
+
+     Dispatch on the class of the array and call a client-supplied
+     function accordingly, like UNSIGNED-64-BIT-AREF, 32-BIT-CHAR,
+     etc.
+
+   * non-simple, not displaced
+
+     Trampoline to the underlying array.
+
+   * displaced
+
+     Trampoline to the underlying array.
