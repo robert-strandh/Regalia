@@ -6,4 +6,4 @@
                "regalia-common")
   :serial t
   :components
-  ())
+  ((:file "array")))
