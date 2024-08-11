@@ -3,4 +3,5 @@
 (defsystem "regalia-base-extrinsic"
   :serial t
   :components
-  ((:file "packages")))
+  ((:file "packages")
+   (:file "accessors")))
