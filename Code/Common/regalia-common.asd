@@ -4,4 +4,5 @@
   :serial t
   :components
   ((:file "simple-array-p")
-   (:file "displaced-array-p")))
+   (:file "displaced-array-p")
+   (:file "aref")))
