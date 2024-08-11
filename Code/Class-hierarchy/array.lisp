@@ -6,6 +6,12 @@
 
 (defgeneric underlying-array (array))
 
+(defgeneric (setf underlying-array) (underlying-array array))
+
+(defgeneric displaced-index-offset (array))
+
+(defgeneric (setf displaced-index-offset) (offset array))
+
 ;;; ARRAY is a standard class, so STANDARD-OBJECT will automatically
 ;;; be included as a superclass.
 (defclass array ()
@@ -19,4 +25,10 @@
    (%underlying-array
     :initform nil
     :initarg :underlying-array
-    :accessor underlying-array)))
+    :accessor underlying-array)
+   ;; When the array is a displaced array, this slot contains a
+   ;; non-negative integer.  Otherwise, this slot contains NIL.
+   (%displaced-index-offset
+    :initform nil
+    :initarg :displaced-index-offset
+    :accessor displaced-index-offset)))
