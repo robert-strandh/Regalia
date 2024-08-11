@@ -1,7 +1,7 @@
 (cl:in-package #:regalia)
 
-;;; This generic function is a reader for a slot that stores the list
-;;; of dimensions in the rack.
+;;; This generic function is a reader for a slot containing the list
+;;; of dimensions.
 (defgeneric array-dimensions (array))
 
 ;;; ARRAY is a standard class, so STANDARD-OBJECT will automatically
