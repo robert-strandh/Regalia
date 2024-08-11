@@ -1,7 +1,7 @@
 (cl:in-package #:regalia)
 
 (defun array-is-simple-p (array)
-  (null (underlying-array object)))
+  (null (underlying-array array)))
 
 (defgeneric simple-array-p (object))
 
