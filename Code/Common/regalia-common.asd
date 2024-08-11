@@ -3,4 +3,5 @@
 (defsystem "regalia-common"
   :serial t
   :components
-  ((:file "simple-array-p")))
+  ((:file "simple-array-p")
+   (:file "displaced-array-p")))
