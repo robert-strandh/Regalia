@@ -2,7 +2,8 @@
 
 (defsystem "regalia-extrinsic"
   :depends-on ("regalia-base-extrinsic"
-               "regalia-class-hierarchy")
+               "regalia-class-hierarchy"
+               "regalia-common")
   :serial t
   :components
   ())
