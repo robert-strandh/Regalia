@@ -14,3 +14,6 @@
                :datum axis-number
                :expected-type `(integer 0 ,(1- (length dimensions))))
         (nth axis-number dimensions))))
+
+(defun array-rank (array)
+  (length (array-dimensions array)))
