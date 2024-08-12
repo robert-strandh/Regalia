@@ -6,6 +6,7 @@
   ((:file "simple-array-p")
    (:file "displaced-array-p")
    (:file "dimensions")
+   (:file "total-size")
    (:file "row-major-index")
    (:file "row-major-aref")
    (:file "aref")
