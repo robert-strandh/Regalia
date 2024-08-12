@@ -8,4 +8,5 @@
    (:file "dimensions")
    (:file "row-major-index")
    (:file "row-major-aref")
-   (:file "aref")))
+   (:file "aref")
+   (:file "condition-types")))
