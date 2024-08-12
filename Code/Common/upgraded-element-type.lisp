@@ -28,4 +28,6 @@
         ((subtypep type-specifier 'single-float environment)
          'single-float)
         ((subtypep type-specifier 'character environment)
-         'character)))
+         'character)
+        (t
+         't)))
