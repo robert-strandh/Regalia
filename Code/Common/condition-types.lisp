@@ -77,3 +77,8 @@
                      (type-of (type-error-datum condition))
                      (given-array condition)
                      (type-error-expected-type condition)))))
+
+(define-condition invalid-axis-number (type-error)
+  ())
+
+
