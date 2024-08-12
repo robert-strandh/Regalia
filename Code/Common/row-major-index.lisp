@@ -11,7 +11,7 @@
 (defmethod array-row-major-index ((array array) &rest subscripts)
   (let ((dimensions (array-dimensions array)))
     (unless (= (length dimensions) (length subscripts))
-      (error 'number-of-indices-must-equal-array-rank
+      (error 'number-of-subscripts-must-equal-array-rank
              :subscripts subscripts
              :array array))
     (loop for index in subscripts

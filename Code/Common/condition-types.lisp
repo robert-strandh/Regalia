@@ -11,21 +11,21 @@
                      (type-error-expected-type condition)
                      (type-error-datum condition)))))
 
-(define-condition number-of-indices-must-equal-array-rank
+(define-condition number-of-subscripts-must-equal-array-rank
     (error)
-  ((%indices :initarg :indices :reader indices)
+  ((%subscripts :initarg :subscripts :reader subscripts)
    (%array :initarg :array :reader given-array))
   (:report (lambda (condition stream)
              (format stream
-                     "The following indices:~@
+                     "The following subscripts:~@
                       ~s~@
                       were given in order to access the array:~@
                       ~s~.@
-                      However, the number of indices given is ~d~@
+                      However, the number of subscripts given is ~d~@
                       whereas the randk of the array is ~d."
-                     (indices condition)
+                     (subscripts condition)
                      (given-array condition)
-                     (length (indices condition))
+                     (length (subscripts condition))
                      (array-rank (given-array condition))))))
 
 (define-condition index-must-be-non-negative-and-less-than-dimension
