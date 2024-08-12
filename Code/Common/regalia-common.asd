@@ -11,4 +11,5 @@
    (:file "row-major-index")
    (:file "row-major-aref")
    (:file "aref")
+   (:file "upgraded-element-type")
    (:file "condition-types")))
