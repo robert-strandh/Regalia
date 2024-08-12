@@ -5,3 +5,12 @@
           (array-is-displaced-p array))
       (call-next-method)
       (array-dimensions (underlying-array array))))
+
+(defun array-dimension (array axis-number)
+  (let ((dimensions (array-dimensions array)))
+    (if (or (minusp axis-number)
+            (>= axis-number (length dimensions)))
+        (error 'invalid-axis-number
+               :datum axis-number
+               :expected-type `(integer 0 ,(1- (length dimensions))))
+        (nth axis-number dimensions))))
