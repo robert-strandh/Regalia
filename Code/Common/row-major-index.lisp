@@ -14,12 +14,12 @@
       (error 'number-of-subscripts-must-equal-array-rank
              :subscripts subscripts
              :array array))
-    (loop for index in subscripts
+    (loop for subscript in subscripts
           for dimension in dimensions
-          for index-number from 0
-          for result = index then (+ (* result dimension) index)
-          unless (and (integerp index) (>= index 0) (< index dimension))
-            do (error 'index-must-be-non-negative-and-less-than-dimension
+          for subscript-number from 0
+          for result = subscript then (+ (* result dimension) subscript)
+          unless (and (integerp subscript) (>= subscript 0) (< subscript dimension))
+            do (error 'subscript-must-be-non-negative-and-less-than-dimension
                       :array array
-                      :index-number index-number)
+                      :subscript-number subscript-number)
           finally (return result))))
