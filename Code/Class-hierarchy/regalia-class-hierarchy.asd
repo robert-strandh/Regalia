@@ -19,6 +19,7 @@
    (:file "array-complex-single-float")
    (:file "array-character")
    (:file "vector")
+   (:file "simple-vector")
    (:file "vector-unsigned-byte-64")
    (:file "vector-signed-byte-64")
    (:file "vector-unsigned-byte-32")
