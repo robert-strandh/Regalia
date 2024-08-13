@@ -12,4 +12,5 @@
    (:file "row-major-aref")
    (:file "aref")
    (:file "upgraded-element-type")
+   (:file "class-name-from-element-type")
    (:file "condition-types")))
