@@ -13,4 +13,5 @@
    (:file "aref")
    (:file "upgraded-element-type")
    (:file "class-name-from-element-type")
+   (:file "check-dimensions")
    (:file "condition-types")))
