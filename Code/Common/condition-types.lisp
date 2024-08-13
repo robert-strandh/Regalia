@@ -81,4 +81,12 @@
 (define-condition invalid-axis-number (type-error)
   ())
 
-
+(define-condition invalid-dimensions (error)
+  ((%dimensions :initarg :dimensions :reader dimensions))
+  (:report (lambda (condition stream)
+             (format stream
+                     "Dimensions must be a designator for a list~@
+                      of non-negative integers, but the following~@
+                      was found instead:~@
+                      ~s"
+                     (dimensions condition)))))
