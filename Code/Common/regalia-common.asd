@@ -3,7 +3,8 @@
 (defsystem "regalia-common"
   :serial t
   :components
-  ((:file "simple-array-p")
+  ((:file "variables")
+   (:file "simple-array-p")
    (:file "displaced-array-p")
    (:file "in-bounds-p")
    (:file "dimensions")
