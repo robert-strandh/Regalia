@@ -29,3 +29,11 @@
       :dimensions (list length)
       :size length
       :element-type element-type)))
+
+(defun make-basic-non-vector (dimensions element-type environment)
+  (let ((class-name
+          (vector-class-name-from-element-type element-type environment)))
+    (make-instance class-name
+      :dimensions dimensions
+      :size (reduce #'* dimensions)
+      :element-type element-type)))
