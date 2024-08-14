@@ -6,10 +6,14 @@
 (defun valid-dimension-p (dimension)
   (typep dimension '(integer 0)))
 
-(defun check-dimensions (dimensions)
-  (unless (or (valid-dimension-p dimensions)
-              (and (proper-list-p dimensions)
-                   (every #'valid-dimension-p dimensions)))
-    (error 'invalid-dimensions
-           :dimensions dimensions)))
+(defun check-and-canonicalize-dimensions (dimensions)
+  (cond ((valid-dimension-p dimensions)
+         (list dimensions))
+        ((and (proper-list-p dimensions)
+              (every #'valid-dimension-p dimensions))
+         dimensions)
+        (t
+         (error 'invalid-dimensions
+                :dimensions dimensions))))
+
 
