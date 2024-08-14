@@ -26,7 +26,7 @@
          #:fill-pointer
          #:row-marjor-aref
          #:upgraded-array-element-type
-         #:array-dimensions-limit
+         #:array-dimension-limit
          #:array-rank-limit
          #:array-total-size-limit
          #:simple-vector-p
