@@ -37,3 +37,7 @@
       :dimensions dimensions
       :size (reduce #'* dimensions)
       :element-type element-type)))
+
+(defun fill-array (array size element)
+  (loop for i from 0 below size
+        do (setf (aref array i) element)))
