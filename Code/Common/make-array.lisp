@@ -45,12 +45,30 @@
 (defun fill-array-from-contents (dimensions contents step index array)
   (if (null dimensions)
       (setf (row-major-aref array index) contents)
-      (progn (assert (= (length contents) (first dimensions)))
-             (loop for i from index by step
-                   for sequence in contents
-                   do (foo (rest dimensions)
-                           sequence
-                           (/ step (first dimensions))
-                           i
-                           array)))))
-
+      (if (listp contents)
+          (let ((length (ignore-errors (list-length contents))))
+            (cond ((null length)
+                   ;; FIXME: signal a more specific error.
+                   (error "contents must be proper list"))
+                  ((not (= length (first dimensions)))
+                   ;; FIXME: signal a more specific error.
+                   (error "incorrect contents length"))
+                  (t 
+                   (loop for i from index by step
+                         for sequence-or-element in contents
+                         do (foo (rest dimensions)
+                                 sequence-or-element
+                                 (/ step (first dimensions))
+                                 i
+                                 array)))))
+          (let ((length (length contents)))
+            (if (not (= length (first dimensions)))
+                ;; FIXME: signal a more specific error.
+                (error "incorrect contents length")
+                (loop for i from index by step
+                      for sequence-or-element across contents
+                      do (foo (rest dimensions)
+                              sequence-or-element
+                              (/ step (first dimensions))
+                              i
+                              array)))))))
