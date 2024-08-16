@@ -41,3 +41,16 @@
 (defun fill-array-with-element (array size element)
   (loop for i from 0 below size
         do (setf (aref array i) element)))
+
+(defun fill-array-from-contents (dimensions contents step index array)
+  (if (null dimensions)
+      (setf (row-major-aref array index) contents)
+      (progn (assert (= (length contents) (first dimensions)))
+             (loop for i from index by step
+                   for sequence in contents
+                   do (foo (rest dimensions)
+                           sequence
+                           (/ step (first dimensions))
+                           i
+                           array)))))
+
