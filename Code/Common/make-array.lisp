@@ -72,3 +72,33 @@
                               (/ step (first dimensions))
                               i
                               array)))))))
+
+(defun make-array
+    (dimensions
+     &key
+       (element-type t)
+       (initial-element nil initial-element-p)
+       (initial-contents nil initial-contents-p)
+       adjustable
+       fill-pointer
+       displaced-to
+       (displaced-index-offset 0 displaced-index-offset-p))
+  (if (not (null displaced-to))
+      (let ((canonicalized-dimensions
+              (check-and-canonicalize-dimensions dimensions)))
+        (unless (arrayp displaced-to)
+          (error 'object-must-be-an-array
+                 :datum displaced-to
+                 :expected-type 'array))
+        (when initial-element-p
+          (error 'initial-element-cannot-be-given-for-displaced-array))
+        (when initial-contents-p
+          (error 'initial-contents-cannot-be-supplied-for-displaced-array))
+        (if (= (length canonicalized-dimensions) 1)
+            (let ((class-name
+                    (vector-class-name-from-element-type element-type)))
+              (make-instance class-name
+                :dimensions canonicalized-dimensions
+                :underlying-array displaced-to
+                :displaced-index-offset displaced-index-offset))))))
+
