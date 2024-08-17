@@ -91,10 +91,20 @@
                       ~s"
                      (dimensions condition)))))
 
-(define-condition initial-element-cannot-be-given-for-displaced-array (error)
+(define-condition initial-element-cannot-be-supplied-for-displaced-array
+    (error)
   ()
   (:report (lambda (condition stream)
              (declare (ignore condition))
              (format stream
                      "The keyword argument :INITIAL-ELEMENT cannot be~@
+                      supplied when :DISPLACED-TO is supplied."))))
+
+(define-condition initial-contents-cannot-be-supplied-for-displaced-array
+    (error)
+  ()
+  (:report (lambda (condition stream)
+             (declare (ignore condition))
+             (format stream
+                     "The keyword argument :INITIAL-CONTENTS cannot be~@
                       supplied when :DISPLACED-TO is supplied."))))
