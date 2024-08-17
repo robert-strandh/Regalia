@@ -90,3 +90,11 @@
                       was found instead:~@
                       ~s"
                      (dimensions condition)))))
+
+(define-condition initial-element-cannot-be-given-for-displaced-array (error)
+  ()
+  (:report (lambda (condition stream)
+             (declare (ignore condition))
+             (format stream
+                     "The keyword argument :INITIAL-ELEMENT cannot be~@
+                      supplied when :DISPLACED-TO is supplied."))))
