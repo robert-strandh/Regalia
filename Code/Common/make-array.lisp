@@ -82,7 +82,8 @@
        adjustable
        fill-pointer
        displaced-to
-       (displaced-index-offset 0 displaced-index-offset-p))
+       (displaced-index-offset 0 displaced-index-offset-p)
+       environment)
   (if (not (null displaced-to))
       (let ((canonicalized-dimensions
               (check-and-canonicalize-dimensions dimensions)))
@@ -96,7 +97,8 @@
           (error 'initial-contents-cannot-be-supplied-for-displaced-array))
         (if (= (length canonicalized-dimensions) 1)
             (let ((class-name
-                    (vector-class-name-from-element-type element-type)))
+                    (vector-class-name-from-element-type
+                     element-type environment)))
               (make-instance class-name
                 :dimensions canonicalized-dimensions
                 :underlying-array displaced-to
