@@ -109,6 +109,15 @@
                      "The keyword argument :INITIAL-CONTENTS cannot be~@
                       supplied when :DISPLACED-TO is supplied."))))
 
+(define-condition initial-contents-and-initial-element-cannot-both-be-supplied
+    (error)
+  ()
+  (:report (lambda (condition stream)
+             (declare (ignore condition))
+             (format stream
+                     "The keyword arguments :INITIAL-CONTENTS and~@
+                      :INITIAL-ELEMENT cannot both be supplied."))))
+
 (define-condition displaced-index-offset-supplied-but-not-displaced-to
     (error)
   ()
