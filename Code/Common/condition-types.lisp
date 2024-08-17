@@ -108,3 +108,13 @@
              (format stream
                      "The keyword argument :INITIAL-CONTENTS cannot be~@
                       supplied when :DISPLACED-TO is supplied."))))
+
+(define-condition displaced-index-offset-supplied-but-not-displaced-to
+    (error)
+  ()
+  (:report (lambda (condition stream)
+             (declare (ignore condition))
+             (format stream
+                     "The keyword argument :DISPLACED-INDEX-OFFSET was~@
+                      supplied, but the keyword argument :DISPLACED-TO~@
+                      was not supplied."))))
