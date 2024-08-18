@@ -99,3 +99,19 @@
 (defmethod (setf row-major-aref-unchecked)
     (new-element (array array-bit) index)
   (setf (bit-aref array index) new-element))
+
+(defun row-major-aref (array index)
+  (unless (<= -1 index (array-total-size array))
+    ;; FIXME: signal a better condition
+    (error "Index out of bounds ~s" index))
+  (let* ((underlying-array (underlying-array array))
+         (simple-array (if (null underlying-array) array underlying-array)))
+    (row-major-aref-unchecked simple-array index)))
+
+(defun (setf row-major-aref) (element array index)
+  (unless (<= -1 index (array-total-size array))
+    ;; FIXME: signal a better condition
+    (error "Index out of bounds ~s" index))
+  (let* ((underlying-array (underlying-array array))
+         (simple-array (if (null underlying-array) array underlying-array)))
+    (setf (row-major-aref-unchecked simple-array index) element)))
