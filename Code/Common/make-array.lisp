@@ -88,6 +88,7 @@
        environment)
   (let* ((canonicalized-dimensions
            (check-and-canonicalize-dimensions dimensions))
+         (size (reduce #'* canonicalized-dimensions))
          (class-name
            (if (= (length canonicalized-dimensions) 1)
                (vector-class-name-from-element-type
@@ -117,6 +118,7 @@
                :underlying-array underlying-array)))
           (t
            (let ((result (make-instance class-name
+                           :size size
                            :dimensions canonicalized-dimensions)))
              (cond (initial-element-p
                     (when initial-contents-p
