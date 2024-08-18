@@ -23,4 +23,4 @@
     :accessor displaced-index-offset)
    (%contents
     :initarg :contents
-    :reader contentas)))
+    :reader contents)))
