@@ -6,4 +6,5 @@
                "regalia-common")
   :serial t
   :components
-  ((:file "array")))
+  ((:file "array")
+   (:file "initialize-instance")))
