@@ -40,7 +40,7 @@
 
 (defun fill-array-with-element (array size element)
   (loop for i from 0 below size
-        do (setf (aref array i) element)))
+        do (setf (row-major-aref array i) element)))
 
 
 (defun fill-array-from-contents (array dimensions contents)
