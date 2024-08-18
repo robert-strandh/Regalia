@@ -105,6 +105,7 @@
            (when initial-contents-p
              (error 'initial-contents-cannot-be-supplied-for-displaced-array))
            (make-instance class-name
+             :element-type element-type
              :dimensions canonicalized-dimensions
              :underlying-array displaced-to
              :displaced-index-offset displaced-index-offset))
@@ -114,10 +115,12 @@
            (let ((underlying-array
                    (apply #'make-array :adjustable nil arguments)))
              (make-instance class-name
+               :element-type element-type
                :dimensions canonicalized-dimensions
                :underlying-array underlying-array)))
           (t
            (let ((result (make-instance class-name
+                           :element-type element-type
                            :size size
                            :dimensions canonicalized-dimensions)))
              (cond (initial-element-p
