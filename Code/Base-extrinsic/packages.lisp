@@ -24,7 +24,7 @@
          #:array-total-size
          #:arrayp
          #:fill-pointer
-         #:row-marjor-aref
+         #:row-major-aref
          #:upgraded-array-element-type
          #:array-dimension-limit
          #:array-rank-limit
