@@ -2,6 +2,12 @@
 
 (defgeneric contents (array))
 
+(defun t-aref (array index)
+  (cl:svref (contents array) index))
+
+(defun (setf t-aref) (new-element array index)
+  (setf (cl:svref (contents array) index) new-element))
+
 (defun signed-64-bit-aref (array index)
   (cl:svref (contents array) index))
 
