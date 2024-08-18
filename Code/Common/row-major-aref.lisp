@@ -5,6 +5,14 @@
 (defgeneric (setf row-major-aref-unchecked) (new-element array index))
 
 (defmethod row-major-aref-unchecked
+    ((array array-t) index)
+  (t-aref array index))
+
+(defmethod (setf row-major-aref-unchecked)
+    (new-element (array array-t) index)
+  (setf (t-aref array index) new-element))
+
+(defmethod row-major-aref-unchecked
     ((array array-signed-byte-64) index)
   (signed-64-bit-aref array index))
 
