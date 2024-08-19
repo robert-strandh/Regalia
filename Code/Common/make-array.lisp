@@ -132,7 +132,7 @@
                      initial-element))
                    (initial-contents-p
                     (fill-array-from-contents
-                     result dimensions initial-contents))
+                     result canonicalized-dimensions initial-contents))
                    (t
                     (let ((element
                             (default-initial-element
