@@ -136,3 +136,15 @@
                       following was found instead:~@
                       ~s"
                      (contents condition)))))
+
+(define-condition incorrect-contents-length (error)
+  ((%contents :initarg :contents :reader contents)
+   (%expected-length :initarg :expected-length :reader expected-length))
+  (:report (lambda (condition stream)
+             (format stream
+                     "A sequence of length ~d was expected, but the~@
+                      following sequence of length ~d was found instead:~@
+                      ~s"
+                     (expected-length condition)
+                     (length (contents condition))
+                     (contents condition)))))
