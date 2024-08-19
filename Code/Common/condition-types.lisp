@@ -127,3 +127,12 @@
                      "The keyword argument :DISPLACED-INDEX-OFFSET was~@
                       supplied, but the keyword argument :DISPLACED-TO~@
                       was not supplied."))))
+
+(define-condition contents-must-be-proper-list (error)
+  ((%contents :initarg :contents :reader contents))
+  (:report (lambda (condition stream)
+             (format stream
+                     "Contents list must be a proper list, but the~@
+                      following was found instead:~@
+                      ~s"
+                     (contents condition)))))
