@@ -44,7 +44,7 @@
 
 
 (defun fill-array-from-contents (array dimensions contents)
-  (labels ((aux (dimensions contents step index)
+  (labels ((aux (dimensions steps contents step index)
              (if (null dimensions)
                  (setf (row-major-aref array index) contents)
                  (if (listp contents)
@@ -59,8 +59,9 @@
                               (loop for i from index by step
                                     for sequence-or-element in contents
                                     do (aux (rest dimensions)
+                                            (rest steps)
                                             sequence-or-element
-                                            (/ step (first dimensions))
+                                            (/ step (first steps))
                                             i)))))
                      (let ((length (length contents)))
                        (if (not (= length (first dimensions)))
@@ -69,10 +70,14 @@
                            (loop for i from index by step
                                  for sequence-or-element across contents
                                  do (aux (rest dimensions)
+                                         (rest steps)
                                          sequence-or-element
-                                         (/ step (first dimensions))
+                                         (/ step (first steps))
                                          i))))))))
-    (aux dimensions contents (apply #'* (butlast dimensions)) 0)))
+    (aux dimensions
+         (reverse dimensions)
+         contents
+         (apply #'* (rest dimensions)) 0)))
 
 (defun make-array
     (dimensions
