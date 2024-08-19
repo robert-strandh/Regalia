@@ -53,8 +53,9 @@
                               (error 'contents-must-be-proper-list
                                      :contents contents))
                              ((not (= length (first dimensions)))
-                              ;; FIXME: signal a more specific error.
-                              (error "incorrect contents length"))
+                              (error 'incorrect-contents-length
+                                     :contents contents
+                                     :expected-length (first dimensions)))
                              (t 
                               (loop for i from index by step
                                     for sequence-or-element in contents
@@ -65,8 +66,9 @@
                                             i)))))
                      (let ((length (length contents)))
                        (if (not (= length (first dimensions)))
-                           ;; FIXME: signal a more specific error.
-                           (error "incorrect contents length")
+                           (error 'incorrect-contents-length
+                                     :contents contents
+                                     :expected-length (first dimensions))
                            (loop for i from index by step
                                  for sequence-or-element across contents
                                  do (aux (rest dimensions)
