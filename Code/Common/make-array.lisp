@@ -120,7 +120,8 @@
            (when displaced-index-offset-p
              (error 'displaced-index-offset-supplied-but-not-displaced-to))
            (let ((underlying-array
-                   (apply #'make-array :adjustable nil arguments)))
+                   (apply #'make-array
+                          dimensions :adjustable nil arguments)))
              (make-instance class-name
                :element-type element-type
                :dimensions canonicalized-dimensions
