@@ -50,8 +50,8 @@
                  (if (listp contents)
                      (let ((length (ignore-errors (list-length contents))))
                        (cond ((null length)
-                              ;; FIXME: signal a more specific error.
-                              (error "contents must be proper list"))
+                              (error 'contents-must-be-proper-list
+                                     :contents contents))
                              ((not (= length (first dimensions)))
                               ;; FIXME: signal a more specific error.
                               (error "incorrect contents length"))
