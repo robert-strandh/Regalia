@@ -18,4 +18,5 @@
    (:file "arrayp")
    (:file "make-array")
    (:file "adjustable-array-p")
+   (:file "array-displacement")
    (:file "condition-types")))
