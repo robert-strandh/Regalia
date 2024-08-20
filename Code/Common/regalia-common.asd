@@ -17,4 +17,5 @@
    (:file "check-dimensions")
    (:file "arrayp")
    (:file "make-array")
+   (:file "adjustable-array-p")
    (:file "condition-types")))
