@@ -32,3 +32,15 @@
     :initform nil
     :initarg :displaced-index-offset
     :accessor displaced-index-offset)))
+
+(setf (documentation 'array-dimensions 'function)
+      (format nil
+              "Syntax: array-dimensions array~@
+               ~@
+               This function returns a list of non-negative integers.~@
+               The list may be empty if the array has rank 0.  If~@
+               ARRAY is a vector with a fill pointer, the fill pointer~@
+               is ignored.~@
+               ~@
+               If ARRAY is not an object of type ARRAY, then an error~@
+               of type TYPE-ERROR is signaled."))
