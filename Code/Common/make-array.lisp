@@ -22,25 +22,17 @@
         ((subtypep element-type 'character)
          #\Space)))
 
-(defun make-basic-vector (length element-type environment)
+(defun make-basic-array (dimensions element-type environment)
   (let* ((class-name
-           (vector-class-name-from-element-type
-            element-type environment))
-         (size (size-from-element-count length class-name)))
-    (make-instance class-name
-      :dimensions (list length)
-      :size size
-      :element-type element-type)))
-
-(defun make-basic-non-vector (dimensions element-type environment)
-  (let ((class-name
-          (non-vector-class-name-from-element-type
-           element-type environment))
-        (size (size-from-element-count (reduce #'* dimensions) class-name)))
-    (make-instance class-name
-      :dimensions dimensions
-      :size size
-      :element-type element-type)))
+           (funcall (if (= (length dimensions) 1)
+                        #'vector-class-name-from-element-type
+                        #'non-vector-class-name-from-element-type)
+                    element-type environment))
+         (size (size-from-element-count (reduce #'* dimensions) class-name)))
+    (make-array-instance class-name
+                         :dimensions dimensions
+                         :size size
+                         :element-type element-type)))
 
 (defun fill-array-with-element (array size element)
   (loop for i from 0 below size
