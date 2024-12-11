@@ -90,7 +90,7 @@
        environment)
   (let* ((canonicalized-dimensions
            (check-and-canonicalize-dimensions dimensions))
-         (size (reduce #'* canonicalized-dimensions))
+         (element-count (reduce #'* canonicalized-dimensions))
          (class-name
            (if (= (length canonicalized-dimensions) 1)
                (vector-class-name-from-element-type
@@ -122,16 +122,15 @@
                :dimensions canonicalized-dimensions
                :underlying-array underlying-array)))
           (t
-           (let ((result (make-instance class-name
-                           :element-type element-type
-                           :size size
-                           :dimensions canonicalized-dimensions)))
+           (let ((result
+                   (make-basic-array
+                    canonicalized-dimensions element-type environment)))
              (cond (initial-element-p
                     (when initial-contents-p
                       (error 'initial-contents-and-initial-element-cannot-both-be-supplied))
                     (fill-array-with-element
                      result
-                     (reduce #'* canonicalized-dimensions)
+                     element-count
                      initial-element))
                    (initial-contents-p
                     (fill-array-from-contents
@@ -142,6 +141,6 @@
                              element-type environment)))
                       (fill-array-with-element
                        result
-                       (reduce #'* canonicalized-dimensions)
+                       element-count
                        element))))
                  result)))))
