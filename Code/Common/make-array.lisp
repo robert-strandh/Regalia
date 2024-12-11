@@ -23,25 +23,28 @@
          #\Space)))
 
 (defun make-basic-vector (length element-type environment)
-  (let ((class-name
-          (vector-class-name-from-element-type element-type environment)))
+  (let* ((class-name
+           (vector-class-name-from-element-type
+            element-type environment))
+         (size (size-from-element-count length class-name)))
     (make-instance class-name
       :dimensions (list length)
-      :size length
+      :size size
       :element-type element-type)))
 
 (defun make-basic-non-vector (dimensions element-type environment)
   (let ((class-name
-          (vector-class-name-from-element-type element-type environment)))
+          (non-vector-class-name-from-element-type
+           element-type environment))
+        (size (size-from-element-count (reduce #'* dimensions) class-name)))
     (make-instance class-name
       :dimensions dimensions
-      :size (reduce #'* dimensions)
+      :size size
       :element-type element-type)))
 
 (defun fill-array-with-element (array size element)
   (loop for i from 0 below size
         do (setf (row-major-aref array i) element)))
-
 
 (defun fill-array-from-contents (array dimensions contents)
   (labels ((aux (dimensions steps contents step index)
