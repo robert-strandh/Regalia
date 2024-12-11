@@ -16,6 +16,7 @@
    (:file "class-name-from-element-type")
    (:file "check-dimensions")
    (:file "arrayp")
+   (:file "size-from-element-count")
    (:file "make-array")
    (:file "adjustable-array-p")
    (:file "array-displacement")
