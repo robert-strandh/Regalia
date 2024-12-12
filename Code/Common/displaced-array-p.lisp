@@ -12,6 +12,3 @@
 
 (defmethod displaced-array-p ((object array))
   (array-is-displaced-p object))
-
-(deftype displaced-array ()
-  `(and array (satisfies displaced-array-p)))

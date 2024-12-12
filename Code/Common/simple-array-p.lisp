@@ -10,6 +10,3 @@
 
 (defmethod simple-array-p ((object array))
   (array-is-simple-p object))
-
-(deftype simple-array ()
-  `(and array (satisfies simple-array-p)))
