@@ -41,6 +41,4 @@
          #:bit-not
          #:bit-vector-p
          #:simple-bit-vector-p))
-  (:export
-   #:make-array-instance
-   . #1#))
+  (:export . #1#))
