@@ -31,4 +31,5 @@
    (:file "vector-double-float")
    (:file "vector-complex-single-float")
    (:file "vector-complex-double-float")
-   (:file "array-bit")))
+   (:file "array-bit")
+   (:file "bit-vector")))
