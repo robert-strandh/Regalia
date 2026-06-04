@@ -25,6 +25,8 @@
          'vector-complex-single-float)
         ((subtypep element-type '(complex double-float) environment)
          'vector-complex-double-float)
+        ((subtypep element-type 'character)
+         'string)
         (t
          'simple-vector)))
 
@@ -53,5 +55,7 @@
          'array-complex-single-float)
         ((subtypep element-type '(complex double-float) environment)
          'array-complex-double-float)
+        ((subtypep element-type 'character)
+         'array-character)
         (t
          'array-t)))
