@@ -14,6 +14,7 @@
     ((vector-double-float array-double-float) 64)
     ((vector-complex-single-float array-complex-single-float) 64)
     ((vector-complex-double-float array-complex-double-float) 128)
+    ((string array-character) 64)
     ((simple-vector array-t) 64)))
 
 (defun size-from-element-count (element-count class-name)
